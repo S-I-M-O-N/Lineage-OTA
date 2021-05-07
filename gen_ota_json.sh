@@ -5,7 +5,7 @@ REPOS="${@:2}"
 
 d=$(date +%Y%m%d)
 
-FILENAME=lineage-18.1-"${d}"-UNOFFICIAL-"${DEVICE}".zip
+FILENAME=$(echo "lineage-18.1-${d}-UNOFFICIAL-${DEVICE}.zip")
 
 oldd=$(grep filename $DEVICE.json | cut -d '-' -f 3)
 md5=$(md5sum ../out/target/product/$DEVICE/$FILENAME | cut -d ' ' -f 1)
@@ -30,14 +30,16 @@ done
 echo "########################################" >> changelog.txt
 
 #This is where the magic happens
-sed -i "s!${oldmd5}! \"${md5}\",!g" $DEVICE.json
-sed -i "s!${oldutc}! \"${utc}\",!g" $DEVICE.json
-sed -i "s!${oldsize}! \"${size}\",!g" $DEVICE.json
-sed -i "s!${oldd}!${d}!" $DEVICE.json
+sed -i "s/$oldmd5/ \"$md5\",/g" $DEVICE.json
+sed -i "s/${oldutc}/ \"${utc}\",/g" $DEVICE.json
+sed -i "s/${oldsize}/ \"${size}\",/g" $DEVICE.json
 #echo Generate Download URL
 TAG=$(echo "${DEVICE}-${d}")
 url="https://github.com/SGCMarkus/Lineage-OTA/releases/download/${TAG}/${FILENAME}"
+
+# sed doesnt wanna replace the filenames date in the url for whatever reason, even though the url is correct
 sed -i "s|${oldurl}|\"${url}\",|g" $DEVICE.json
+sed -i "s/${oldd}/${d}/g" $DEVICE.json
 
 git add $DEVICE.json
 git commit -m "Update ${DEVICE} to ${d}"

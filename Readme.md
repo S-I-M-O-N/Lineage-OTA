@@ -1,7 +1,6 @@
 # Information
 
-This repository provides LineageOS OTA releases for the V30, V40 and V50
-
+This repository provides LineageOS OTA releases for the Armor X5 aka Bretzel
 # Requirements
 
 You need to install `hub` ([Instructions](https://stackoverflow.com/questions/21214562/how-to-release-versions-on-github-through-the-command-line/52353299#52353299))

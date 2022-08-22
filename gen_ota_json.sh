@@ -47,4 +47,4 @@ git add $DEVICE.json
 git commit -m "Update ${DEVICE} to ${d}"
 git push origin lineage-17.1
 
-#hub release create -a ../out/target/product/$DEVICE/$FILENAME -a changelog.txt -m "${TAG}" "${TAG}"
+hub release create -a ../out/target/product/$DEVICE/$FILENAME -a changelog.txt -m "${TAG}" "${TAG}"

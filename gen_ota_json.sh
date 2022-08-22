@@ -5,7 +5,9 @@ REPOS="${@:2}"
 
 d=$(date +%Y%m%d)
 
-FILENAME=$(echo "lineage-18.1-${d}-UNOFFICIAL-${DEVICE}.zip")
+FILENAME=$(echo "lineage-17.1-${d}-UNOFFICIAL-${DEVICE}.zip")
+
+mv ../signed-ota_update.zip ../out/target/product/$DEVICE/$FILENAME
 
 oldd=$(grep filename $DEVICE.json | cut -d '-' -f 3)
 md5=$(md5sum ../out/target/product/$DEVICE/$FILENAME | cut -d ' ' -f 1)
@@ -35,7 +37,7 @@ sed -i "s/${oldutc}/ \"${utc}\",/g" $DEVICE.json
 sed -i "s/${oldsize}/ \"${size}\",/g" $DEVICE.json
 #echo Generate Download URL
 TAG=$(echo "${DEVICE}-${d}")
-url="https://github.com/SGCMarkus/Lineage-OTA/releases/download/${TAG}/${FILENAME}"
+url="https://github.com/S-I-M-O-N/Lineage-OTA/releases/download/${TAG}/${FILENAME}"
 
 # sed doesnt wanna replace the filenames date in the url for whatever reason, even though the url is correct
 sed -i "s|${oldurl}|\"${url}\",|g" $DEVICE.json
@@ -43,6 +45,6 @@ sed -i "s/${oldd}/${d}/g" $DEVICE.json
 
 git add $DEVICE.json
 git commit -m "Update ${DEVICE} to ${d}"
-git push sgc lineage-18.1
+git push origin lineage-17.1
 
-hub release create -a ../out/target/product/$DEVICE/$FILENAME -a changelog.txt -m "${TAG}" "${TAG}"
+#hub release create -a ../out/target/product/$DEVICE/$FILENAME -a changelog.txt -m "${TAG}" "${TAG}"

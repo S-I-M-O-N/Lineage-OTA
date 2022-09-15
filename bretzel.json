@@ -1,12 +1,12 @@
 {
   "response": [
     {
-      "datetime": "1661168450",
-      "filename": "lineage-17.1-20220822-UNOFFICIAL-bretzel.zip",
-      "id": "7c04baef1928e7173fe53eeda464ec84",
+      "datetime": "1663229249",
+      "filename": "lineage-17.1-20220915-UNOFFICIAL-bretzel.zip",
+      "id": "d5fb9061f4d74de7dba0bc8ac45375bc",
       "romtype": "UNOFFICIAL",
-      "size": "592748777",
-      "url":  "https://github.com/S-I-M-O-N/Lineage-OTA/releases/download/bretzel-20220822/lineage-17.1-20220822-UNOFFICIAL-bretzel.zip",
+      "size": "592787756",
+      "url":  "https://github.com/S-I-M-O-N/Lineage-OTA/releases/download/bretzel-20220915/lineage-17.1-20220915-UNOFFICIAL-bretzel.zip",
       "version": "17.1"
     }
   ]
